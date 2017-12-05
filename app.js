@@ -1,4 +1,20 @@
+
 const request = require('request')
+const yargs = require('yargs')
+const argv = yargs
+.options({
+    //since we dont have any commands for this project we are using optons to determine 
+    //what rules we want to apply.
+    // to test it write node app.js -a 'amman'
+    'a': {
+        alias: 'address',
+        demandOption: true,
+        describe: 'you need the address to know the weather',
+        type: 'string'
+      }
+})
+.help()
+.argv
 
 request({ url: 'http://maps.googleapis.com/maps/api/geocode/json?address=%20amman',
 // we can access the location because the information we got back is
