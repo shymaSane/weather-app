@@ -1,9 +1,13 @@
 getUser = (id, callback) =>{
   var user = {
-      id: id,
+      id,
       name: "shyma"
   }
-  callback(user)
+  
+  setTimeout(() => {
+    callback(user)  
+  }, 2100)
+  
 }
 
 getUser(40, (userOb) => {
