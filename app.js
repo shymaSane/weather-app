@@ -11,7 +11,7 @@ const argv = yargs
         alias: 'address',
         demandOption: true,
         describe: 'you need the address to know the weather',
-        string: true
+        type: 'string'
       }
 })
 .help()
