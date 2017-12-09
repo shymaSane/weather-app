@@ -1,8 +1,10 @@
 
 const request = require('request');
 
-var geoAddress = (encodeAddress) => {
-    request({ url: `http://maps.googleapis.com/maps/api/geocode/json?address=${encodeAddress}`,
+var geoAddress = (address) => {
+    //to encode the address in order to add it to the url
+var encodeAddress = encodeURIComponent(address);
+ request({ url: `http://maps.googleapis.com/maps/api/geocode/json?address=${encodeAddress}`,
 // we can access the location because the information we got back is
     // stringified so what to do ?
     // beside the url add josn:true 
