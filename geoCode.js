@@ -43,8 +43,23 @@ var encodeAddress = encodeURIComponent(address);
     }
 }
 )
-}
+};
+
+// a function to get weather based on longitude and latitude 
+// the function designed based on the weather site api 
+//used darksky api 
+// key number is : ace670289483d06154db2dd798527a98
+var getWeather = (latitude, longitude) => {
+    // var key = ace670289483d06154db2dd798527a98;
+    request({url: `https://api.darksky.net/forecast/ace670289483d06154db2dd798527a98/${latitude},${longitude}`,
+     json: true
+    }, (error, response, body) => {
+        console.log(JSON.stringify(body, undefined, 2))
+    })
+
+};
 
 module.exports = {
- geoAddress
-}
+ geoAddress,
+ getWeather
+};

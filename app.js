@@ -28,7 +28,7 @@ geoCode.geoAddress(address, (errorMessage, results) => {
      console.log(errorMessage)
  } else {
      console.log(JSON.stringify(results, undefined, 2))
-    // console.log(results)
+     geoCode.getWeather(results.latitude, results.longitude)
  }
 })
 
