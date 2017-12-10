@@ -25,10 +25,10 @@ var address = argv.address;
 //putting address and callback because i want to do different things for the results getting from the geoAddress function 
 geoCode.geoAddress(address, (errorMessage, results) => {
  if(errorMessage){
-     console.log(errorMessage)
+     console.log(errorMessage);
  } else {
-     console.log(JSON.stringify(results, undefined, 2))
-     geoCode.getWeather(results.latitude, results.longitude)
+     console.log(JSON.stringify(results, undefined, 2));
+     geoCode.getWeather(results.latitude, results.longitude);
  }
 })
 

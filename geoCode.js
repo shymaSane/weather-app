@@ -54,7 +54,16 @@ var getWeather = (latitude, longitude) => {
     request({url: `https://api.darksky.net/forecast/ace670289483d06154db2dd798527a98/${latitude},${longitude}`,
      json: true
     }, (error, response, body) => {
-        console.log(JSON.stringify(body, undefined, 2))
+        if(error){
+            console.log('Unabel to connect Dark Sky');
+        } else if (body.code === 400){
+            console.log("the given location or time is invalid");
+        } else {
+            console.log(`The weather today is: ${body.daily.summary}`);
+            console.log(`The highest temperature today is: ${body.daily.data[0].temperatureMax} f`);
+            console.log(`The lowest temperature today is: ${body.daily.data[0].temperatureMin} f`);
+
+        }
     })
 
 };
