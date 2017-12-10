@@ -27,8 +27,16 @@ geoCode.geoAddress(address, (errorMessage, results) => {
  if(errorMessage){
      console.log(errorMessage);
  } else {
-     console.log(JSON.stringify(results, undefined, 2));
-     geoCode.getWeather(results.latitude, results.longitude);
+     geoCode.getWeather(results.latitude, results.longitude, (errorMes, weather) => {
+         if(errorMes){
+             console.log(errorMes)
+         }
+            console.log(`The weather today is: ${weather.summary}`);
+            console.log('........................');
+            console.log(`The highest temperature today is: ${weather.high}  ْf`);
+            console.log('........................');
+            console.log(`The lowest temperature today is: ${weather.low}  ْf`);
+     });
  }
 })
 

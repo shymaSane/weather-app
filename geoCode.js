@@ -49,19 +49,24 @@ var encodeAddress = encodeURIComponent(address);
 // the function designed based on the weather site api 
 //used darksky api 
 // key number is : ace670289483d06154db2dd798527a98
-var getWeather = (latitude, longitude) => {
+var getWeather = (latitude, longitude, callback) => {
     // var key = ace670289483d06154db2dd798527a98;
     request({url: `https://api.darksky.net/forecast/ace670289483d06154db2dd798527a98/${latitude},${longitude}`,
      json: true
     }, (error, response, body) => {
         if(error){
-            console.log('Unabel to connect Dark Sky');
+            callback('Unabel to connect Dark Sky');
         } else if (body.code === 400){
-            console.log("the given location or time is invalid");
+            callback("the given location or time is invalid");
         } else {
-            console.log(`The weather today is: ${body.daily.summary}`);
-            console.log(`The highest temperature today is: ${body.daily.data[0].temperatureMax} f`);
-            console.log(`The lowest temperature today is: ${body.daily.data[0].temperatureMin} f`);
+            callback(undefined, {
+                summary: body.daily.summary,
+                high: body.daily.data[0].temperatureMax,
+                low: body.daily.data[0].temperatureMin
+            })
+            // console.log(`The weather today is: ${body.daily.summary}`);
+            // console.log(`The highest temperature today is: ${body.daily.data[0].temperatureMax} f`);
+            // console.log(`The lowest temperature today is: ${body.daily.data[0].temperatureMin} f`);
 
         }
     })
