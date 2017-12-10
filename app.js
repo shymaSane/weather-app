@@ -20,6 +20,15 @@ const argv = yargs
 // to get the address
 var address = argv.address;
 
-
-geoCode.geoAddress(address)
+//calling the function from geoCode.js 
+//its always better to move th functionality to another file and use this file just for calling 
+//putting address and callback because i want to do different things for the results getting from the geoAddress function 
+geoCode.geoAddress(address, (errorMessage, results) => {
+ if(errorMessage){
+     console.log(errorMessage)
+ } else {
+     console.log(JSON.stringify(results, undefined, 2))
+    // console.log(results)
+ }
+})
 
